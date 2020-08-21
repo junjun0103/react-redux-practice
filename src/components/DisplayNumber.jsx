@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import store from '../store';
 
 export default class DisplayNumber extends Component {
+  state = { number: 0 };
+
+  constructor(props) {
+    super(props);
+    store.subscribe(() => this.setState({ number: store.getState().number }));
+  }
   render() {
     return (
       <div>
         <h1>Display Number</h1>
-        <input type='text' value={this.props.number} readOnly></input>
+        <input type='text' value={this.state.number} readOnly></input>
       </div>
     );
   }
