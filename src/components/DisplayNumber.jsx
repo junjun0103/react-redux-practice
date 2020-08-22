@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class DisplayNumber extends Component {
+class DisplayNumber extends Component {
   render() {
     return (
       <div>
@@ -10,3 +11,11 @@ export default class DisplayNumber extends Component {
     );
   }
 }
+
+function mapReduxStateToReactProps(state) {
+  return {
+    number: state.number,
+  };
+}
+
+export default connect(mapReduxStateToReactProps)(DisplayNumber);
